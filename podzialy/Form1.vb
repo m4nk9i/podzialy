@@ -17,6 +17,7 @@
     Dim liczba_kolumn1 As Integer
     Dim liczba_wersow2 As Integer
     Dim liczba_kolumn2 As Integer
+    Dim skala_rys As Integer = 65
 
 
 
@@ -91,9 +92,10 @@
 
     End Sub
 
-    Private Sub prostokat(kol As Pen, px As Integer, py As Integer, pw As Integer, ph As Integer)
-        Dim skala = 0.65
-        graf.DrawRectangle(kol, CInt(px * skala), CInt(py * skala), CInt(pw * skala), CInt(ph * skala))
+    Private Sub prostokat(g As Graphics, kol As Pen, px As Integer, py As Integer, pw As Integer, ph As Integer, dod_sk As Single)
+        Dim skala = dod_sk * skala_rys / 100.0
+        g.DrawRectangle(kol, CInt(px * skala), CInt(py * skala), CInt(pw * skala), CInt(ph * skala))
+        'graf.DrawRectangle(kol, CInt(px * skala), CInt(py * skala), CInt(pw * skala), CInt(ph * skala))
 
     End Sub
 
@@ -117,32 +119,32 @@
         liczba_wersow2 = Math.Floor((pole_wys + wycinki) / (szerokosc_uz + wycinki))
         liczba_kolumn2 = Math.Floor((pole_szer + wycinki) / (wysokosc_uz + wycinki))
 
-
+        TextBox1.AppendText("=================" + System.Environment.NewLine)
         TextBox1.AppendText("wyliczenia dla arkusza " + CStr(szerokosc_ark) + " x " + CStr(wysokosc_ark) + System.Environment.NewLine)
         TextBox1.AppendText("pole zadruku z uzglednieniem marginesow: " + CStr(pole_szer) + " x " + CStr(pole_wys) + System.Environment.NewLine)
         TextBox1.AppendText("uzytek " + CStr(szerokosc_uz) + " x " + CStr(wysokosc_uz) + " wycinki " + CStr(wycinki) + System.Environment.NewLine)
         TextBox1.AppendText("liczba uzytkow " + CStr(liczba_wersow1) + " x " + CStr(liczba_kolumn1) + " = " + CStr(liczba_kolumn1 * liczba_wersow1) + System.Environment.NewLine)
         TextBox1.AppendText("liczba uzytkow " + CStr(liczba_wersow2) + " x " + CStr(liczba_kolumn2) + " = " + CStr(liczba_kolumn2 * liczba_wersow2) + System.Environment.NewLine)
-
+        TextBox1.AppendText(System.Environment.NewLine + System.Environment.NewLine)
 
 
     End Sub
 
-    Private Sub rysuj()
+    Private Sub rysuj(g As Graphics, dodsk As Single)
         graf.Clear(Color.White)
 
-        prostokat(Pens.Black, 0, 0, szerokosc_ark, wysokosc_ark)
+        prostokat(g, Pens.Black, 0, 0, szerokosc_ark, wysokosc_ark, dodsk)
 
-        prostokat(Pens.Black, 0, (wysokosc_ark), (szerokosc_ark), CInt(wysokosc_ark))
-        prostokat(Pens.Green, marg_lewa, marg_gora, szerokosc_ark - marg_prawa - marg_lewa, wysokosc_ark - marg_dol - marg_gora)
-        prostokat(Pens.Green, marg_lewa, wysokosc_ark + marg_gora, szerokosc_ark - marg_prawa - marg_lewa, wysokosc_ark - marg_dol - marg_gora)
+        prostokat(g, Pens.Black, 0, (wysokosc_ark), (szerokosc_ark), CInt(wysokosc_ark), dodsk)
+        prostokat(g, Pens.Green, marg_lewa, marg_gora, szerokosc_ark - marg_prawa - marg_lewa, wysokosc_ark - marg_dol - marg_gora, dodsk)
+        prostokat(g, Pens.Green, marg_lewa, wysokosc_ark + marg_gora, szerokosc_ark - marg_prawa - marg_lewa, wysokosc_ark - marg_dol - marg_gora, dodsk)
 
         If ((liczba_kolumn1 > 0) And (liczba_wersow1 > 0)) Then
             Dim startx = marg_lewa + (pole_szer - (liczba_kolumn1 * szerokosc_uz + (liczba_kolumn1 - 1) * wycinki)) / 2
             Dim starty = marg_gora + (pole_wys - (liczba_wersow1 * wysokosc_uz + (liczba_wersow1 - 1) * wycinki)) / 2
             For i As Integer = 0 To liczba_kolumn1 - 1
                 For j As Integer = 0 To liczba_wersow1 - 1
-                    prostokat(Pens.Black, CInt(startx + i * (szerokosc_uz + wycinki)), CInt(starty + j * (wysokosc_uz + wycinki)), szerokosc_uz, wysokosc_uz)
+                    prostokat(g, Pens.Black, CInt(startx + i * (szerokosc_uz + wycinki)), CInt(starty + j * (wysokosc_uz + wycinki)), szerokosc_uz, wysokosc_uz, dodsk)
                 Next j
             Next i
         End If
@@ -153,7 +155,7 @@
             Dim starty = wysokosc_ark + marg_gora + (pole_wys - (liczba_wersow2 * szerokosc_uz + (liczba_wersow2 - 1) * wycinki)) / 2
             For i As Integer = 0 To liczba_kolumn2 - 1
                 For j As Integer = 0 To liczba_wersow2 - 1
-                    prostokat(Pens.Black, CInt(startx + i * (wysokosc_uz + wycinki)), CInt(starty + j * (szerokosc_uz + wycinki)), wysokosc_uz, szerokosc_uz)
+                    prostokat(g, Pens.Black, CInt(startx + i * (wysokosc_uz + wycinki)), CInt(starty + j * (szerokosc_uz + wycinki)), wysokosc_uz, szerokosc_uz, dodsk)
                 Next j
             Next i
         End If
@@ -162,7 +164,15 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         policz()
-        rysuj()
+        Dim sk1 = Panel1.Height / (2 * wysokosc_ark)
+        Dim sk2 = Panel1.Width / szerokosc_ark
+        If (sk1 > sk2) Then
+            TrackBar1.Value = sk2 * 100
+        Else
+            TrackBar1.Value = sk1 * 100
+        End If
+        skala_rys = TrackBar1.Value
+        rysuj(graf, 1)
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs)
@@ -170,7 +180,7 @@
     End Sub
 
     Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-        rysuj()
+        rysuj(graf, 1)
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -195,5 +205,45 @@
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         MaskedTextBox5.Text = "4"
+    End Sub
+
+    Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
+
+    End Sub
+
+    Private Sub TrackBar1_Scroll(sender As Object, e As EventArgs) Handles TrackBar1.Scroll
+        skala_rys = TrackBar1.Value
+
+
+        rysuj(graf, 1)
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+
+
+        PrintPreviewDialog1.ShowDialog()
+
+        rysuj(graf, 1)
+    End Sub
+
+    Private Sub PrintDocument1_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
+        Dim fon As Font
+        fon = New Drawing.Font("Arial", 12)
+
+        rysuj(e.Graphics, 1.5)
+        e.Graphics.DrawString("Format arkusza " + CStr(szerokosc_ark) + " x " + CStr(wysokosc_ark), fon, Brushes.Black, 20, 20)
+        e.Graphics.DrawString("pole zadruku " + CStr(pole_szer) + " x " + CStr(pole_wys), fon, Brushes.Black, 20, 40)
+        e.Graphics.DrawString("uzytek " + CStr(szerokosc_uz) + " x " + CStr(wysokosc_uz) + " wycinki " + CStr(wycinki), fon, Brushes.Black, 20, 60)
+        e.Graphics.DrawString("PODZIAŁ A " + CStr(liczba_wersow1) + " x " + CStr(liczba_kolumn1) + " = " + CStr(liczba_kolumn1 * liczba_wersow1), fon, Brushes.Black, 20, 80)
+        e.Graphics.DrawString("PODZIAŁ B " + CStr(liczba_wersow2) + " x " + CStr(liczba_kolumn2) + " = " + CStr(liczba_kolumn2 * liczba_wersow2), fon, Brushes.Black, 20, 100)
+
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub Button7_Click_1(sender As Object, e As EventArgs) Handles Button7.Click
+        PrintDialog1.ShowDialog()
     End Sub
 End Class
