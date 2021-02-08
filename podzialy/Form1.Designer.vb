@@ -62,7 +62,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(34, 42)
+        Me.Label1.Location = New System.Drawing.Point(48, 42)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(76, 13)
         Me.Label1.TabIndex = 0
@@ -71,7 +71,7 @@ Partial Class Form1
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(328, 35)
+        Me.ComboBox1.Location = New System.Drawing.Point(342, 35)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
         Me.ComboBox1.TabIndex = 3
@@ -79,7 +79,7 @@ Partial Class Form1
         'ComboBox2
         '
         Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(328, 87)
+        Me.ComboBox2.Location = New System.Drawing.Point(342, 87)
         Me.ComboBox2.Name = "ComboBox2"
         Me.ComboBox2.Size = New System.Drawing.Size(121, 21)
         Me.ComboBox2.TabIndex = 7
@@ -87,7 +87,7 @@ Partial Class Form1
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(40, 95)
+        Me.Label2.Location = New System.Drawing.Point(54, 95)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(70, 13)
         Me.Label2.TabIndex = 4
@@ -96,7 +96,7 @@ Partial Class Form1
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(68, 138)
+        Me.Label3.Location = New System.Drawing.Point(82, 138)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(42, 13)
         Me.Label3.TabIndex = 8
@@ -114,7 +114,7 @@ Partial Class Form1
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(213, 200)
+        Me.Label5.Location = New System.Drawing.Point(227, 201)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(33, 13)
         Me.Label5.TabIndex = 12
@@ -123,7 +123,7 @@ Partial Class Form1
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(325, 238)
+        Me.Label6.Location = New System.Drawing.Point(322, 238)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(35, 13)
         Me.Label6.TabIndex = 14
@@ -132,7 +132,7 @@ Partial Class Form1
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(214, 281)
+        Me.Label7.Location = New System.Drawing.Point(228, 279)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(32, 13)
         Me.Label7.TabIndex = 16
@@ -149,7 +149,7 @@ Partial Class Form1
         '
         'MaskedTextBox1
         '
-        Me.MaskedTextBox1.Location = New System.Drawing.Point(116, 35)
+        Me.MaskedTextBox1.Location = New System.Drawing.Point(130, 35)
         Me.MaskedTextBox1.Mask = "00000"
         Me.MaskedTextBox1.Name = "MaskedTextBox1"
         Me.MaskedTextBox1.Size = New System.Drawing.Size(100, 20)
@@ -158,7 +158,7 @@ Partial Class Form1
         '
         'MaskedTextBox2
         '
-        Me.MaskedTextBox2.Location = New System.Drawing.Point(222, 35)
+        Me.MaskedTextBox2.Location = New System.Drawing.Point(236, 35)
         Me.MaskedTextBox2.Mask = "00000"
         Me.MaskedTextBox2.Name = "MaskedTextBox2"
         Me.MaskedTextBox2.Size = New System.Drawing.Size(100, 20)
@@ -166,7 +166,7 @@ Partial Class Form1
         '
         'MaskedTextBox3
         '
-        Me.MaskedTextBox3.Location = New System.Drawing.Point(116, 86)
+        Me.MaskedTextBox3.Location = New System.Drawing.Point(130, 86)
         Me.MaskedTextBox3.Mask = "00000"
         Me.MaskedTextBox3.Name = "MaskedTextBox3"
         Me.MaskedTextBox3.Size = New System.Drawing.Size(100, 20)
@@ -174,7 +174,7 @@ Partial Class Form1
         '
         'MaskedTextBox4
         '
-        Me.MaskedTextBox4.Location = New System.Drawing.Point(222, 87)
+        Me.MaskedTextBox4.Location = New System.Drawing.Point(236, 87)
         Me.MaskedTextBox4.Mask = "00000"
         Me.MaskedTextBox4.Name = "MaskedTextBox4"
         Me.MaskedTextBox4.Size = New System.Drawing.Size(100, 20)
@@ -182,7 +182,7 @@ Partial Class Form1
         '
         'MaskedTextBox5
         '
-        Me.MaskedTextBox5.Location = New System.Drawing.Point(116, 135)
+        Me.MaskedTextBox5.Location = New System.Drawing.Point(130, 135)
         Me.MaskedTextBox5.Mask = "00000"
         Me.MaskedTextBox5.Name = "MaskedTextBox5"
         Me.MaskedTextBox5.Size = New System.Drawing.Size(100, 20)
@@ -191,7 +191,7 @@ Partial Class Form1
         '
         'MaskedTextBox6
         '
-        Me.MaskedTextBox6.Location = New System.Drawing.Point(252, 193)
+        Me.MaskedTextBox6.Location = New System.Drawing.Point(266, 194)
         Me.MaskedTextBox6.Mask = "00000"
         Me.MaskedTextBox6.Name = "MaskedTextBox6"
         Me.MaskedTextBox6.Size = New System.Drawing.Size(100, 20)
@@ -200,7 +200,7 @@ Partial Class Form1
         '
         'MaskedTextBox7
         '
-        Me.MaskedTextBox7.Location = New System.Drawing.Point(252, 274)
+        Me.MaskedTextBox7.Location = New System.Drawing.Point(266, 272)
         Me.MaskedTextBox7.Mask = "00000"
         Me.MaskedTextBox7.Name = "MaskedTextBox7"
         Me.MaskedTextBox7.Size = New System.Drawing.Size(100, 20)
@@ -218,7 +218,7 @@ Partial Class Form1
         '
         'MaskedTextBox9
         '
-        Me.MaskedTextBox9.Location = New System.Drawing.Point(366, 230)
+        Me.MaskedTextBox9.Location = New System.Drawing.Point(363, 230)
         Me.MaskedTextBox9.Mask = "00000"
         Me.MaskedTextBox9.Name = "MaskedTextBox9"
         Me.MaskedTextBox9.Size = New System.Drawing.Size(100, 20)
@@ -240,7 +240,7 @@ Partial Class Form1
         Me.TextBox1.Multiline = True
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox1.Size = New System.Drawing.Size(439, 362)
+        Me.TextBox1.Size = New System.Drawing.Size(439, 351)
         Me.TextBox1.TabIndex = 30
         '
         'Panel1
@@ -252,7 +252,7 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(35, 231)
+        Me.Button2.Location = New System.Drawing.Point(24, 230)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 32
@@ -261,7 +261,7 @@ Partial Class Form1
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(35, 260)
+        Me.Button3.Location = New System.Drawing.Point(24, 260)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(75, 23)
         Me.Button3.TabIndex = 33
@@ -270,7 +270,7 @@ Partial Class Form1
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(233, 132)
+        Me.Button4.Location = New System.Drawing.Point(247, 132)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(75, 23)
         Me.Button4.TabIndex = 34
@@ -279,7 +279,7 @@ Partial Class Form1
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(314, 132)
+        Me.Button5.Location = New System.Drawing.Point(328, 132)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(75, 23)
         Me.Button5.TabIndex = 35
@@ -289,7 +289,7 @@ Partial Class Form1
         'TrackBar1
         '
         Me.TrackBar1.Location = New System.Drawing.Point(577, 685)
-        Me.TrackBar1.Maximum = 150
+        Me.TrackBar1.Maximum = 200
         Me.TrackBar1.Minimum = 50
         Me.TrackBar1.Name = "TrackBar1"
         Me.TrackBar1.Size = New System.Drawing.Size(139, 45)

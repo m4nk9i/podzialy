@@ -22,7 +22,10 @@
 
 
 
+
     Dim formaty_pap = {
+        {"297", "210", "A4"},
+        {"350", "250", "B4"},
         {"430", "305", "A3"},
         {"500", "350", "B3"},
         {"610", "430", "A2"},
@@ -52,8 +55,6 @@
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 
-
-
         For index0 = 0 To formaty_pap.GetUpperBound(0)
             ComboBox1.Items.Add(formaty_pap(index0, 2) + "(" + formaty_pap(index0, 0) + "x" + formaty_pap(index0, 1) + ")")
 
@@ -69,7 +70,10 @@
         ComboBox2.SelectedIndex = 0
 
         graf = Panel1.CreateGraphics
-        policz()
+        Button1.PerformClick()
+
+        'policz()
+        'rysuj(graf, 1)
 
     End Sub
 
@@ -92,9 +96,9 @@
 
     End Sub
 
-    Private Sub prostokat(g As Graphics, kol As Pen, px As Integer, py As Integer, pw As Integer, ph As Integer, dod_sk As Single)
-        Dim skala = dod_sk * skala_rys / 100.0
-        g.DrawRectangle(kol, CInt(px * skala), CInt(py * skala), CInt(pw * skala), CInt(ph * skala))
+    Private Sub prostokat(g As Graphics, kol As Pen, px As Single, py As Single, pw As Single, ph As Single, dod_sk As Single)
+        Dim skala As Single = dod_sk * skala_rys / 100.0
+        g.DrawRectangle(kol, (px * skala), (py * skala), (pw * skala), (ph * skala))
         'graf.DrawRectangle(kol, CInt(px * skala), CInt(py * skala), CInt(pw * skala), CInt(ph * skala))
 
     End Sub
@@ -123,8 +127,8 @@
         TextBox1.AppendText("wyliczenia dla arkusza " + CStr(szerokosc_ark) + " x " + CStr(wysokosc_ark) + System.Environment.NewLine)
         TextBox1.AppendText("pole zadruku z uzglednieniem marginesow: " + CStr(pole_szer) + " x " + CStr(pole_wys) + System.Environment.NewLine)
         TextBox1.AppendText("uzytek " + CStr(szerokosc_uz) + " x " + CStr(wysokosc_uz) + " wycinki " + CStr(wycinki) + System.Environment.NewLine)
-        TextBox1.AppendText("liczba uzytkow " + CStr(liczba_wersow1) + " x " + CStr(liczba_kolumn1) + " = " + CStr(liczba_kolumn1 * liczba_wersow1) + System.Environment.NewLine)
-        TextBox1.AppendText("liczba uzytkow " + CStr(liczba_wersow2) + " x " + CStr(liczba_kolumn2) + " = " + CStr(liczba_kolumn2 * liczba_wersow2) + System.Environment.NewLine)
+        TextBox1.AppendText("liczba uzytkow " + CStr(liczba_kolumn1) + " x " + CStr(liczba_wersow1) + " = " + CStr(liczba_kolumn1 * liczba_wersow1) + System.Environment.NewLine)
+        TextBox1.AppendText("liczba uzytkow " + CStr(liczba_kolumn2) + " x " + CStr(liczba_wersow2) + " = " + CStr(liczba_kolumn2 * liczba_wersow2) + System.Environment.NewLine)
         TextBox1.AppendText(System.Environment.NewLine + System.Environment.NewLine)
 
 
@@ -155,7 +159,7 @@
             Dim starty = wysokosc_ark + marg_gora + (pole_wys - (liczba_wersow2 * szerokosc_uz + (liczba_wersow2 - 1) * wycinki)) / 2
             For i As Integer = 0 To liczba_kolumn2 - 1
                 For j As Integer = 0 To liczba_wersow2 - 1
-                    prostokat(g, Pens.Black, CInt(startx + i * (wysokosc_uz + wycinki)), CInt(starty + j * (szerokosc_uz + wycinki)), wysokosc_uz, szerokosc_uz, dodsk)
+                    prostokat(g, Pens.Black, (startx + i * (wysokosc_uz + wycinki)), (starty + j * (szerokosc_uz + wycinki)), wysokosc_uz, szerokosc_uz, dodsk)
                 Next j
             Next i
         End If
@@ -230,12 +234,12 @@
         Dim fon As Font
         fon = New Drawing.Font("Arial", 12)
 
-        rysuj(e.Graphics, 1.5)
+        rysuj(e.Graphics, 1.75)
         e.Graphics.DrawString("Format arkusza " + CStr(szerokosc_ark) + " x " + CStr(wysokosc_ark), fon, Brushes.Black, 20, 20)
         e.Graphics.DrawString("pole zadruku " + CStr(pole_szer) + " x " + CStr(pole_wys), fon, Brushes.Black, 20, 40)
         e.Graphics.DrawString("uzytek " + CStr(szerokosc_uz) + " x " + CStr(wysokosc_uz) + " wycinki " + CStr(wycinki), fon, Brushes.Black, 20, 60)
-        e.Graphics.DrawString("PODZIAŁ A " + CStr(liczba_wersow1) + " x " + CStr(liczba_kolumn1) + " = " + CStr(liczba_kolumn1 * liczba_wersow1), fon, Brushes.Black, 20, 80)
-        e.Graphics.DrawString("PODZIAŁ B " + CStr(liczba_wersow2) + " x " + CStr(liczba_kolumn2) + " = " + CStr(liczba_kolumn2 * liczba_wersow2), fon, Brushes.Black, 20, 100)
+        e.Graphics.DrawString("PODZIAŁ A " + CStr(liczba_kolumn1) + " x " + CStr(liczba_wersow1) + " = " + CStr(liczba_kolumn1 * liczba_wersow1), fon, Brushes.Black, 20, 80)
+        e.Graphics.DrawString("PODZIAŁ B " + CStr(liczba_kolumn2) + " x " + CStr(liczba_wersow2) + " = " + CStr(liczba_kolumn2 * liczba_wersow2), fon, Brushes.Black, 20, 100)
 
     End Sub
 
