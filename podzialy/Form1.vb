@@ -248,6 +248,11 @@
     End Sub
 
     Private Sub Button7_Click_1(sender As Object, e As EventArgs) Handles Button7.Click
-        PrintDialog1.ShowDialog()
+        Dim drukuj As DialogResult = PrintDialog1.ShowDialog()
+        If (drukuj = DialogResult.OK) Then
+            PrintPreviewDialog1.ShowDialog()
+        End If
+        rysuj(graf, 1)
+
     End Sub
 End Class

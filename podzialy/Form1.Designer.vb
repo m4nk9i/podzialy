@@ -288,7 +288,7 @@ Partial Class Form1
         '
         'TrackBar1
         '
-        Me.TrackBar1.Location = New System.Drawing.Point(577, 685)
+        Me.TrackBar1.Location = New System.Drawing.Point(561, 685)
         Me.TrackBar1.Maximum = 200
         Me.TrackBar1.Minimum = 50
         Me.TrackBar1.Name = "TrackBar1"
@@ -308,12 +308,13 @@ Partial Class Form1
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(827, 696)
+        Me.Button6.Location = New System.Drawing.Point(843, 696)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(122, 23)
+        Me.Button6.Size = New System.Drawing.Size(106, 23)
         Me.Button6.TabIndex = 0
         Me.Button6.Text = "podgląd wydruku"
         Me.Button6.UseVisualStyleBackColor = True
+        Me.Button6.Visible = False
         '
         'PrintPreviewDialog1
         '
@@ -336,9 +337,9 @@ Partial Class Form1
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(746, 696)
+        Me.Button7.Location = New System.Drawing.Point(706, 696)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(75, 23)
+        Me.Button7.Size = New System.Drawing.Size(131, 23)
         Me.Button7.TabIndex = 38
         Me.Button7.Text = "ustawienia drukowania"
         Me.Button7.UseVisualStyleBackColor = True
